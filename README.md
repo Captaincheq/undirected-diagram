@@ -6,9 +6,10 @@ Given a undirected diagram G(V,E), each edge (i,j) \in (E) has a distance. There
 
 G(V,E):
 
-1,2,3,4,5
-a b distance
-1 2 2 <br>1 5 2 <br>
+1,2,3,4,5<br>
+a b distance<br>
+1 2 2 <br>
+1 5 2 <br>
 1 4 1 <br>
 
 2 3 5<br>
