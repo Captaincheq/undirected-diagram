@@ -129,7 +129,7 @@ main()
 	int i,j;
 	int source,dest;
 	int path[MAX];
-	int shortdist,count;
+	int shortdist,hop;
 
 	create_graph();
 	printf("The adjacency matrix is :\n");
@@ -144,16 +144,16 @@ main()
 
 		if(source==0 || dest==0)
             return 1;
-		count = findpath(source,dest,path,&shortdist);
+		hop = findpath(source,dest,path,&shortdist);
 		if(shortdist!=0)
 		{
 			printf("Shortest distance is : %d\n", shortdist);
 			printf("Shortest Path is : ");
-			for(i=count;i>1;i--)
+			for(i=hop;i>1;i--)
 				printf("%d->",path[i]);
 			printf("%d",path[i]);
 			printf("\n");
-			printf("hop's is : %d\n", count-1);
+			printf("hop's is : %d\n", hop-1);
 		}
 		else
 			printf("There is no path from source to destination node\n");
