@@ -22,15 +22,15 @@ void create_graph()
 	scanf("%d",&n);
 	max_edges=n*(n-1);
 
-	for(i=1;i<=max_edges;i++)
+	for(i=0;i<=max_edges;i++)
 	{
-		printf("Enter edge %d(0 0 to quit) : ",i);
+		printf("Enter edge %d(-1 -1 to quit) : ",i);
 		scanf("%d %d",&origin,&destin);
-		if((origin==0) && (destin==0))
+		if((origin==1) && (destin==-1))
 			break;
 		printf("Enter weight for this edge : ");
 		scanf("%d",&wt);
-		if( origin > n || destin > n || origin<=0 || destin<=0)
+		if( origin > n || destin > n || origin<=-1 || destin<=-1)
 		{
 			printf("Invalid edge!\n");
 			i--;
@@ -43,9 +43,9 @@ void create_graph()
 void display()
 {
 	int i,j;
-	for(i=1;i<=n;i++)
+	for(i=0;i<=n;i++)
 	{
-		for(j=1;j<=n;j++)
+		for(j=0;j<=n;j++)
 			printf("%3d",adj[i][j]);
 		printf("\n");
 	}
@@ -74,7 +74,7 @@ int findpath(int s,int d,int path[MAX],int *sdist)
 	current=s;
 	while(current!=d)
 	{
-		for(i=1;i<=n;i++)
+		for(i=0;i<=n;i++)
 		{
 			/*Checks for adjacent temporary nodes */
 			if ( adj[current][i] > 0 && state[i].status == TEMP )
@@ -92,7 +92,7 @@ int findpath(int s,int d,int path[MAX],int *sdist)
 		//Search for temporary node with minimum distand make it current node
 		min=infinity;
 		current=0;
-		for(i=1;i<=n;i++)
+		for(i=0;i<=n;i++)
 		{
 			if(state[i].status == TEMP && state[i].dist < min)
 			{
@@ -123,7 +123,7 @@ int findpath(int s,int d,int path[MAX],int *sdist)
 	}
 	return (count);
 }
-
+/*All outputs are in main function*/
 main()
 {
 	int i,j;
@@ -137,12 +137,12 @@ main()
 
 	while(1)
 	{
-		printf("Enter source node(0 to quit) : ");
+		printf("Enter source node(-1 to quit) : ");
 		scanf("%d",&source);
-		printf("Enter destination node(0 to quit) : ");
+		printf("Enter destination node(-1 to quit) : ");
 		scanf("%d",&dest);
 
-		if(source==0 || dest==0)
+		if(source==-1 || dest==-1)
             return 1;
 		hop = findpath(source,dest,path,&shortdist);
 		if(shortdist!=0)
@@ -153,7 +153,7 @@ main()
 				printf("%d->",path[i]);
 			printf("%d",path[i]);
 			printf("\n");
-			printf("hop's is : %d\n", hop-1);
+			printf("hop is : %d\n", hop-1);
 		}
 		else
 			printf("There is no path from source to destination node\n");
