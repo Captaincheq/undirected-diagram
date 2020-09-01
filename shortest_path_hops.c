@@ -141,10 +141,14 @@ main()
 		scanf("%d",&source);
 		printf("Enter destination node(-1 to quit) : ");
 		scanf("%d",&dest);
-
+		printf("Enter destination node(-1 to quit) : ");
+		scanf("%d",&hop1);
+		
 		if(source==-1 || dest==-1)
             return 1;
 		hop = findpath(source,dest,path,&shortdist);
+
+
 		if(shortdist!=0)
 		{
 			printf("Shortest distance is : %d\n", shortdist);
@@ -153,7 +157,7 @@ main()
 				printf("%d->",path[i]);
 			printf("%d",path[i]);
 			printf("\n");
-			printf("hop is : %d\n", hop-1);
+			printf("hop is : %d\n", hop);
 		}
 		else
 			printf("There is no path from source to destination node\n");
